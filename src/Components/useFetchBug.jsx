@@ -13,12 +13,13 @@ const GET_BUGS = gql`
 
 export const useFetchBug = () => {
 
-    const {data, loading, refetch} = useQuery(GET_BUGS)
+    const {data, loading, refetch, error} = useQuery(GET_BUGS)
   
   
     return {
     refetch,
     loading,
-    data
+    data,
+    error
   }
 }

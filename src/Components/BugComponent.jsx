@@ -41,7 +41,7 @@ const DELETE_BUG = gql`
 `;
 
 export const GetBug = () => {
-  const { data, loading, refetch } = useFetchBug();
+  const { data, loading, refetch, error } = useFetchBug();
 
   const [bugName, setBugName] = useState('');
   const [bugStatus, setBugStatus] = useState('');
@@ -92,12 +92,20 @@ export const GetBug = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          minHeight: '100vh', // Ensure full viewport height
+          minHeight: '100vh', 
         }}
       >
         <CircularProgress />
       </div>
     );
+  }
+
+  if (error){
+    return(
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
+        <h1>oops... something went wrong..!!</h1>
+      </div>
+    )
   }
 
   return (
